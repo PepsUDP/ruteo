@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  db:
+    build: .
+    environment:
+      POSTGRES_DB: ruteo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      - ./data:/data
+      - ./scripts:/scripts
+    ports:
+      - "5433:5432"
